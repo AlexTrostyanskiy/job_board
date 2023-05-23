@@ -1,4 +1,6 @@
-import { createStyles, Paper, Input, Container, Grid, Group, Text } from '@mantine/core';
+import { createStyles, TextInput, Paper, Code, Input, Container, Grid, Group, Text } from '@mantine/core';
+
+import { IconSearch, IconStar } from '@tabler/icons-react';
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -21,20 +23,37 @@ export default function Home() {
           <Grid.Col span={8}>
             <Grid>
               <Grid.Col span={12}>
-                <Input placeholder="Поіск"/>
+
+              <TextInput
+        placeholder="Введите название вакансии"
+        size="xs"
+        icon={<IconSearch size="0.8rem" stroke={1.5} />}
+        rightSectionWidth={150}
+        rightSection={<Code className={classes.searchCode}>не кнопка</Code>}
+        styles={{ rightSection: { pointerEvents: 'none' } }}
+        mb="sm"
+      />
+
               </Grid.Col>
               <Grid.Col span={12}>
                 <Paper withBorder p="md" radius="md">
                   <div>
-                    <Text c="blue" fz="xl">title</Text>
-                    <Text>salary</Text>
+                    <Text c="blue" fz="xl">Менеджер</Text>
+                    <Text fw={700}>salary</Text>
                     <Text>salary info</Text>
                     <Text>location</Text>
                   </div>
                 </Paper>
               </Grid.Col>
               <Grid.Col span={12}>
-              <Paper withBorder p="md" radius="md"/>
+              <Paper withBorder p="md" radius="md">
+              <div>
+                    <Text c="blue" fz="xl">Менеджер</Text>
+                    <Text>salary</Text>
+                    <Text>salary info</Text>
+                    <Text>location</Text>
+                  </div>
+                  </Paper>
               </Grid.Col>
             </Grid>
             
