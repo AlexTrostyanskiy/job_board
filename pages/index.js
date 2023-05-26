@@ -1,6 +1,6 @@
-import { createStyles, TextInput, Paper, Container, Grid, Button } from '@mantine/core';
+import { createStyles, TextInput, Paper, Container, Grid, Button, NumberInput, MultiSelect, Text, Title } from '@mantine/core';
 
-import { IconSearch } from '@tabler/icons-react';
+import { IconSearch, IconX } from '@tabler/icons-react';
 
 import { VacancyPaper } from '../components/vacancy';
 
@@ -40,16 +40,27 @@ export default function Home() {
           <Grid.Col span={4}>
             <Paper withBorder p="md" radius="md">
 
-              <div class="mb-3">
-                <div class="form-label">Отрасль</div>
-                <select type="text" class="form-select tomselected ts-hidden-accessible"
-                  placeholder="выбирите отрасль" id="select-tags" value multiple="multiple" tabindex="-1">
-                  <option value="1">отрасль1</option>
-                  <option value="2">отрасль2</option>
-                  <option value="3">отрасль3</option>
-                </select>
-              </div>
+              <Title order={4}>Фильтры</Title>
+              <Text fz="sm" c="dimmed">Сбросить все</Text>
+              <IconX size="0.8rem" stroke={1.5} />
 
+              <MultiSelect
+                data={['Машиностроение', 'Жопочесание', 'ИТ']}
+                label="Отрасль"
+                placeholder="Выберите отрасль"
+                searchable
+                nothingFound="Nothing found"
+              />
+              <NumberInput
+                placeholder="От"
+                label="Оклад"
+              />
+              <NumberInput
+                placeholder="До"
+              />
+              <Button radius="md" fullWidth variant="outline">
+                Применить
+              </Button>
             </Paper>
           </Grid.Col>
 
@@ -62,8 +73,8 @@ export default function Home() {
                   size="xs"
                   icon={<IconSearch size="0.8rem" stroke={1.5} />}
                   rightSectionWidth={90}
-                  rightSection={<Button size="xs">
-                    Батон
+                  rightSection={<Button size="xs" compact>
+                    Поиск
                   </Button>}
                   styles={{ rightSection: { pointerEvents: 'none' } }}
                   mb="sm"
