@@ -1,4 +1,4 @@
-import { createStyles, TextInput, Paper, Container, Grid, Button, NumberInput, MultiSelect, Text, Title } from '@mantine/core';
+import { createStyles, TextInput, Paper, Container, Grid, Button, NumberInput, MultiSelect, Text, Title, Pagination, } from '@mantine/core';
 
 import { IconSearch, IconX } from '@tabler/icons-react';
 
@@ -9,7 +9,11 @@ const useStyles = createStyles((theme) => ({
     padding: `calc(${theme.spacing.xl} * 1.5)`,
     height: '100%'
   },
+  mb: {
+    marginBottom: '0.5rem'
+  }
 }));
+
 
 export default function Home() {
   const { classes } = useStyles();
@@ -41,8 +45,10 @@ export default function Home() {
             <Paper withBorder p="md" radius="md">
 
               <Title order={4}>Фильтры</Title>
+
               <Text fz="sm" c="dimmed">Сбросить все</Text>
-              <IconX size="0.8rem" stroke={1.5} />
+              <IconX size="0.9rem" stroke={1.5} />
+
 
               <MultiSelect
                 data={['Машиностроение', 'Жопочесание', 'ИТ']}
@@ -51,11 +57,12 @@ export default function Home() {
                 searchable
                 nothingFound="Nothing found"
               />
-              <NumberInput
+              <Text>Оклад</Text>
+              <NumberInput className={classes.mb}
                 placeholder="От"
-                label="Оклад"
+
               />
-              <NumberInput
+              <NumberInput className={classes.mb}
                 placeholder="До"
               />
               <Button radius="md" fullWidth variant="outline">
@@ -89,7 +96,7 @@ export default function Home() {
                 )
               })}
             </Grid>
-
+            <Pagination total={10} />
           </Grid.Col>
         </Grid>
       </Container>
